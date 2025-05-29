@@ -87,11 +87,20 @@ public class BrokerService {
         long requestStartTime = System.currentTimeMillis();
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-Request-Start-Time", String.valueOf(requestStartTime));
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        String url = "http://localhost:8081/broker" + servicePath;
+        headers.set("Content-Type", "application/json");
+
+        String url = "https://localhost:8081/api/apps/citizen-engage/summary";
+        String payload = """
+                {
+                "models": ["openai"],
+                "text": "Die Südbrücke durchquert das Erholungsgebiet Rheinaue. Dieses wird jedoch durch den Verkehrslärm (Tempo 100) sowie höhere Schadstoffmengen belastet. Die Sinnhaftigkeit von Tempo 100 auf der Südbrücke ist angesichts der Länge der Tempozone äußerst fragwürdig. In Richtung Osten muss am Aufstieg Ramersdorf wieder auf Tempo 60 heruntergebremst werden, Richtung Königswinter auf 80. In Richtung Westen auf Tempo 50 bzw. noch Tempo 70 entlang der Rheinaue Richtung Bad Godesberg."
+                }
+                """;
+
+        HttpEntity<String> entity = new HttpEntity<>(payload, headers);
 
         try {
-            ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+            ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
             if (responseEntity.getStatusCode().is2xxSuccessful()) {
                 long requestEndTime = System.currentTimeMillis();
                 responseTimes.add(requestEndTime - requestStartTime);

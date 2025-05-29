@@ -23,7 +23,7 @@ public class RequestorController {
     public ResponseEntity<Metrics> triggerSlowRequests() {
         logger.info("Triggering slow requests");
         try {
-            Metrics metrics = brokerService.triggerRequests("slow", "/slow", 50);
+            Metrics metrics = brokerService.triggerRequests("slow", "/slow", 1);
             if (metrics != null) {
                 return ResponseEntity.ok(metrics);
             } else {
@@ -41,7 +41,7 @@ public class RequestorController {
     public ResponseEntity<Metrics> triggerFastRequests() {
         logger.info("Triggering fast requests");
         try {
-            Metrics metrics = brokerService.triggerRequests("fast", "/fast", 50);
+            Metrics metrics = brokerService.triggerRequests("fast", "/fast", 15);
             if (metrics != null) {
                 return ResponseEntity.ok(metrics);
             } else {
