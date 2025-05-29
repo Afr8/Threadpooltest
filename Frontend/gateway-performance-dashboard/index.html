@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gateway Performance Dashboard</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Gateway Performance Dashboard</h1>
+
+            <div class="controls">
+                <button id="startSlowRequests">
+                    Starte 50 langsame Anfragen
+                </button>
+                <button id="startFastRequests">
+                    Starte 50 schnelle Anfragen
+                </button>
+            </div>
+
+            <div class="status-messages">
+                <p id="statusText"></p>
+                <!-- ID korrigiert und in <p> verschachtelt für Konsistenz -->
+            </div>
+
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+                <!-- width und height Attribute entfernt, da dies besser über CSS oder Chart.js Optionen gesteuert wird -->
+            </div>
+
+            <div class="raw-json">
+                <!-- Fehlendes Element hinzugefügt -->
+                <h2>Roh-JSON-Metriken:</h2>
+                <pre id="rawJsonOutput"></pre>
+            </div>
+        </div>
+
+        <script src="js/app.js"></script>
+    </body>
+</html>
