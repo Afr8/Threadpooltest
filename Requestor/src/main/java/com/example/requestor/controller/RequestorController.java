@@ -41,7 +41,7 @@ public class RequestorController {
     public ResponseEntity<Metrics> triggerFastRequests() {
         logger.info("Triggering fast requests");
         try {
-            Metrics metrics = brokerService.triggerRequests("fast", "/fast", 15);
+            Metrics metrics = brokerService.triggerRequests("fast", "/fast", 100);
             if (metrics != null) {
                 return ResponseEntity.ok(metrics);
             } else {

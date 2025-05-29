@@ -35,7 +35,7 @@ public class BrokerService {
         // oder einer anderen passenden Größe, um Ressourcen zu schonen.
         // Für 50 Anfragen könnte ein Pool von 50 Threads sinnvoll sein, wenn die
         // externen Aufrufe blockierend sind.
-        this.executorService = Executors.newFixedThreadPool(50);
+        this.executorService = Executors.newFixedThreadPool(111);
     }
 
     public Metrics triggerRequests(String type, String path, int count) {

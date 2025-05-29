@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chartCanvas.style.display = 'block'; // Show canvas if there is data
         rawJsonOutput.textContent = JSON.stringify(metricsData, null, 2);
 
-        const chartTitle = `Antwortzeiten (${metricsData.type} Anfragen)`;
+        const chartTitle = `Antwortzeiten (Anfragen)`;
 
         const chartData = {
             labels: [
